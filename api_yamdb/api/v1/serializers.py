@@ -39,17 +39,23 @@ class ReadOnlyTitleSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Title
-        fields = ("id", "name", "year", "rating", "description", "genre", "category")
+        fields = (
+            "id", "name", "year", "rating", "description", "genre", "category"
+        )
 
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
-        fields = ("username", "email", "first_name", "last_name", "bio", "role")
+        fields = (
+            "username", "email", "first_name", "last_name", "bio", "role"
+        )
         model = User
 
 
 class ReviewSerializer(serializers.ModelSerializer):
-    author = serializers.SlugRelatedField(slug_field="username", read_only=True)
+    author = serializers.SlugRelatedField(
+        slug_field="username", read_only=True
+    )
 
     class Meta:
         fields = ("id", "text", "author", "score", "pub_date")
@@ -60,8 +66,12 @@ class ReviewSerializer(serializers.ModelSerializer):
             return data
         else:
             author = self.context["request"].user
-            title_id = self.context["request"].parser_context["kwargs"]["title_id"]
-            if Review.objects.filter(author=author, title__id=title_id).exists():
+            title_id = (
+                self.context["request"].parser_context["kwargs"]["title_id"]
+            )
+            if Review.objects.filter(
+                author=author, title__id=title_id
+            ).exists():
                 raise serializers.ValidationError(
                     "Не более одного отзыва на произведение!"
                 )
@@ -96,8 +106,16 @@ class SignUpSerializer(Serializer):
         username = attrs["username"]
         email = attrs["email"]
         if (
-            User.objects.filter(email=email).exclude(username=username).exists()
-            or User.objects.filter(username=username).exclude(email=email).exists()
+            User.objects.filter(
+                email=email
+            ).exclude(
+                username=username
+            ).exists()
+            or User.objects.filter(
+                username=username
+            ).exclude(
+                email=email
+            ).exists()
         ):
             raise serializers.ValidationError({"email": "Имя занято"})
         return attrs
