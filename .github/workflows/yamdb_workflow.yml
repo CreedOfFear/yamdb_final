@@ -50,6 +50,8 @@ jobs:
         # Пуш образа в Docker Hub 
         uses: docker/build-push-action@v2 
         with:
+          context: ./api_yamdb
+          file: ./DockerFile
           push: true
           tags: creedoffear/yamdb:latest
   deploy:
