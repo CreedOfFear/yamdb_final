@@ -1,9 +1,7 @@
 ![](https://github.com/CreedOfFear/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
 
-<<<<<<< HEAD
-=======
+Сервер : https://merkulovdmitry.onthewifi.com/
 
->>>>>>> fb94d780bf6342f899635378e34a9ee1bb749753
 # Запуск docker-compose
 ```
 Это проектное задание модуля Docker, часть курса "Python-developer"
