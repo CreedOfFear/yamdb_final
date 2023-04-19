@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   tests:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest 
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 
@@ -52,8 +52,6 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
-            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/api_yamdb
-            sudo docker stop $(sudo docker ps -a -q)
             sudo docker-compose stop
             sudo docker-compose rm web
             touch .env
