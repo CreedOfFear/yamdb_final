@@ -1,6 +1,8 @@
 ![](https://github.com/CreedOfFear/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
 
-Сервер : https://merkulovdmitry.onthewifi.com/
+Admin: http://158.160.50.5/admin/
+Redoc: http://158.160.50.5/redoc/
+Api: http://158.160.50.5/api/v1/
 
 # Запуск docker-compose
 ```
